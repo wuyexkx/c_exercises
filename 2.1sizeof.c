@@ -11,4 +11,3 @@ int main()
     printf("sizeof is: %lu\n", sizeof(a)); // %lu无符号长整型
     return 0;
 }
-
