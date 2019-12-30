@@ -6,5 +6,5 @@ include_directories(./include)
 # aux_source_directory(./src SRC)
 # add_library(${PROJECT_NAME} ${SRC})
 
-add_executable(const_修改 const_修改.c)
+add_executable(pointer_array pointer_array.c)
 # target_link_libraries(main ${PROJECT_NAME})
