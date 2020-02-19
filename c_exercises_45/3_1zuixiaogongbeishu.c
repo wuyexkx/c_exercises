@@ -47,7 +47,7 @@ void zuixiaogongbeishu()
             a = b;
             b = temp;
         }
-        // 到这里a是最小公倍数
+        // 到这里a是最大公约数
         // 再根据 最大公约数 求最小公倍数
         result = m * n / a;
         printf( "The Greatest Common Divisor (GCD):%d\n", a);
