@@ -41,7 +41,7 @@ void $(push)(_(stack) *s, TEMPLATE *p_data)
 {
     if(s->top == s->stack_length){
         s->stack_length *= 2;
-        s->stack = realloc(s->stack, s->stack_length);
+        s->stack = realloc(s->stack, s->elmt_size * s->stack_length);
         assert(s->stack != NULL);
     }
     char *target = (char *)s->stack + s->top * s->elmt_size;
@@ -83,7 +83,7 @@ _(stack) $(init)()
     s.top = 0;
     s.stack_length = 2;
     s.elmt_size = sizeof(TEMPLATE);
-    s.stack = (TEMPLATE *)malloc(sizeof(TEMPLATE) * s.elmt_size);
+    s.stack = (TEMPLATE *)malloc(s.elmt_size * s.stack_length);
     assert(s.stack != NULL);
     s.pop = $(pop);
     s.push = $(push);
