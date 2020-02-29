@@ -6,5 +6,7 @@ include_directories(./include)
 # aux_source_directory(./src SRC)
 # add_library(${PROJECT_NAME} ${SRC})
 
-add_executable(5_5sushuhuiwen 5_5sushuhuiwen.c)
+add_executable(6_4riqijisuan 6_4riqijisuan.c)
+add_executable(6_5kaidengwenti 6_5kaidengwenti.c)
+
 # target_link_libraries(main ${PROJECT_NAME})
