@@ -39,7 +39,6 @@ void kaidengwenti()
                 }
             }
         }        
-
         for(int i=1; i<=n; ++i){
             if(light[i] == 1)
                 printf("%d ", i);
