@@ -10,6 +10,7 @@ typedef unsigned int uint;
 输入3个非负整数a,b,c ，表示每种队形排尾的人数（a<3,b<5,c<7），
 输出总人数的最小值（或报告无解）。
 已知总人数不小于10，不超过100 。
+
 */
 
 void hanxin_count(uint a, uint b, uint c)
