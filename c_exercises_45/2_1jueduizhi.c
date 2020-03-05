@@ -8,6 +8,7 @@ typedef unsigned int uint;
 输出 对于每组输入数据，输出它的绝对值，要求每组数据输出一行，结果保留两位小数。
 */
 
+
 /*
 Note:
     1. 输入数据的类型 及 格式 double, %lf
