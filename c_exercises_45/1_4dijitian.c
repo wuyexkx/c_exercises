@@ -8,7 +8,6 @@ typedef unsigned int uint;
 YYYY-MM-DD
 */
 
-
 /*
 Note:
     同时满足以下条件：
