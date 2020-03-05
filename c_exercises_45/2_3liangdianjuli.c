@@ -10,6 +10,7 @@ typedef unsigned int uint;
 输出 对于每组输入数据，输出一行，结果保留两位小数。
 */
 
+
 /*
 Note:
     距离公式： sqrt( (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) )
