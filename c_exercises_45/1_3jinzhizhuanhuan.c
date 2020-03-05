@@ -7,6 +7,7 @@ typedef unsigned int uint;
 输入一个十进制数N，将它转换成R进制数输出。
 */
 
+
 void jinzhizhuanhuan(int num, int k)
 {
     uint n = num, residue, index=0;
