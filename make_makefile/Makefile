@@ -31,6 +31,8 @@ $(TARGET):$(OBJS)
 	$(CC) -o $@ $^ $(CFLAGS) $(SYSLIBS) 
 # 依赖的目标
 $(OBJS):
+# # 如果没有BUILD文件夹就创建
+# 	@if [ ! -d $(BUILD) ]; then mkdir -p $(BUILD); fi
 	$(foreach src,$(SRCS),\
 		$(call SRC_TO_OBJ,\
 					$(src),\
