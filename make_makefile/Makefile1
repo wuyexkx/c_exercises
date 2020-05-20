@@ -1,0 +1,32 @@
+
+# make clean && make && ./main.exe
+
+CC = gcc
+DIR_BUILD = build
+
+# SRCS = graph.cpp
+SRCS = c_relative.c
+# SRCS = adjacency_list.cpp
+
+INCS = ./
+TARGET = ./main
+
+OBJS = $(patsubst %.c, $(DIR_BUILD)/%.o, $(notdir $(SRCS)))
+# FLAGS += -std=gnu++11
+FLAGS += -std=gnu11
+
+all: $(DIR_BUILD) $(TARGET)
+	@echo -e ---- Compilation completed, the TARGET in "'$(TARGET)' ---- \n"
+$(TARGET): $(OBJS)
+	$(CC) $(FLAGS) -o $@ $^ 
+
+$(OBJS): $(SRCS)
+	$(CC) $(FLAGS) -I $(INCS) -c $^ -o $@
+
+$(DIR_BUILD):
+# 如果没有BUILD文件夹就创建
+	if [ ! -d $(DIR_BUILD) ]; then mkdir -p $(DIR_BUILD); fi
+
+clean:
+	rm -rf $(DIR_BUILD)
+	rm -rf $(OBJS) $(TARGET)
