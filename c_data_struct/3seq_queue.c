@@ -49,18 +49,18 @@ data sq_rear(sq_queue* sq)
 }
 void sq_push(sq_queue* sq, data d)
 {
-    // 满了就扩增容量
+    // 满了就扩增容量 x 2
     if (sq->isfull(sq)) {
         data* newqueue = (data*)malloc(2 * sq->capacity * sizeof(data));        
         if (sq->tail > sq->head)    // not wrap 没有环绕，直接拷贝，无需更改head tail
             memcpy(newqueue, sq->queue, (sq->capacity) * sizeof(data));
         else {                      // wrap  环绕了, 先拷贝后面的，再拷贝前面的，最后修改head tail
-            int len1 = sq->size - sq->head + 1;
-            memcpy(newqueue, sq->queue + sq->head, len1 * sizeof(data));
-            int len2 = sq->tail + 1;
-            memcpy(newqueue + len1, sq->queue, len2 * sizeof(data));
-            sq->head = 0;
-            sq->tail = sq->size;
+            int len_back = sq->size - sq->head + 1;
+            memcpy(newqueue, sq->queue + sq->head, len_back * sizeof(data));
+            int len_front = sq->tail + 1;
+            memcpy(newqueue + len_front, sq->queue, len_front * sizeof(data));
+            sq->head = 0;       // 修改head tail
+            sq->tail = sq->size;// 
         }
         sq->capacity *= 2;
         free(sq->queue);            
@@ -76,10 +76,10 @@ void sq_pop(sq_queue* sq)
         sq->head = (sq->head + 1) % sq->capacity;
         sq->size--;
     }
-    else {
-        printf("q_queue isempty.\n");
-        exit(1);
-    }
+    // else {
+    //     printf("sequence queue isempty.\n");
+    //     exit(1);
+    // }
 }
 sq_queue sq_create(int capacity)
 {
@@ -103,54 +103,42 @@ void sq_destory(sq_queue* sq)
 
 int main()
 {
+
 #define CAPACITY    (2)    
-    
+#define DATASIZE    (20)
+
     // 准备数据
-    data dat[50];
-    for (int i=0; i<50; ++i)
-        dat[i].d = i;
+    data dat[DATASIZE];
+    for (int i=0; i<DATASIZE; ++i) dat[i].d = i;
 
     // 创建循环顺序链表
     sq_queue sq = sq_create(CAPACITY);
 
-    sq.push(&sq, dat[4]);
-    sq.push(&sq, dat[3]);
-    sq.pop(&sq);
-    sq.push(&sq, dat[2]);
-    sq.push(&sq, dat[1]);
-    sq.pop(&sq);
-    sq.pop(&sq);
-    sq.pop(&sq);
-
-    // 取出打印
-    while (!sq.isempty(&sq)) {
-        printf("%d ", sq.front(&sq).d);
+    for (int i=0; i<DATASIZE; ++i) {
         sq.pop(&sq);
+        sq.push(&sq, dat[i]);
     }
-
-    printf("\n");
+    printf("1 size:%d   only one:%d\n", sq.size, sq.front(&sq).d); // 1 实际只存了一个
+    sq.pop(&sq);
 
     // 再次放入数据
-    for (int i=0; i<10; ++i) {
+    for (int i=0; i<DATASIZE; ++i) {
         sq.push(&sq, dat[i]);
     }
 
-    // 取出打印
+    printf("2 size:%d  ", sq.size);                                  // 2 存放了DATASIZE个
+    // 取完打印
     while (!sq.isempty(&sq)) {
         printf("%d ", sq.front(&sq).d);
         sq.pop(&sq);
     }
-
-    for (int i=0; i<CAPACITY; ++i) {
-        sq.push(&sq, dat[i]);
-    }
-    // 取出打印
-    while (!sq.isempty(&sq)) {
-        printf("%d ", sq.front(&sq).d);
-        sq.pop(&sq);
-    }
+    printf("\n3 size:%d\n", sq.size);                               // 3 空了
 
     sq_destory(&sq);
     
+// stdout:
+    // 1 size:1   only one:19
+    // 2 size:20  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+    // 3 size:0  
     return 0;
 }
