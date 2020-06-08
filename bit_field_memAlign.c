@@ -52,11 +52,11 @@ int main()
 {
     struct bitField1 b1;
     struct bitField2 b2;
-    printf("%d %d\n", sizeof(b1), sizeof(b2)); // 1 1
+    printf("%lu %lu\n", sizeof(b1), sizeof(b2)); // 1 1
 
     struct A a;
     struct B b;    
-    printf("%d %d\n", sizeof(a), sizeof(b)); // 12 8
+    printf("%lu %lu\n", sizeof(a), sizeof(b)); // 12 8
 
     return 0;
 }
