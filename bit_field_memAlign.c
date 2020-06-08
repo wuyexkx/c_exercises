@@ -23,14 +23,14 @@ struct bitField2 {
     // 如有需要编译器会在成员之间加上填充字节。
 // (2) 结构体的总大小为 有效对齐值 的整数倍，如有需要编译器会在最末一个成员之后加上填充字节。
 struct A { // 12
-    char a;     //                               offset=0  占用 0           填充[1]     
+    char a;     //                             offset=0  占用 0           填充[1]     
     short b;    // 成员大小2 offset必须为2的整数倍 offset=2  占用 2 3         无填充      
     char c;     // 成员大小1 offset必须为1的整数倍 offset=4  占用 4           填充[5 6 7] 
     int d;      // 成员大小4 offset必须为4的整数倍 offset=8  占用 8 9 10 11   无填充      
     // double cc;  // 成员大小8 offset必须为4的整数倍 offset=12 占用 12...19     无填充 // struct大小20Byte
 };
 struct B { // 8
-    short a;    //                               offset=0  占用0 1          无填充
+    short a;    //                             offset=0  占用0 1          无填充
     char b;     // 成员大小1 offset必须为1的整数倍 offset=2  占用2            无填充
     char c;     // 成员大小1 offset必须为1的整数倍 offset=3  占用3            无填充
     int d;      // 成员大小4 offset必须为4的整数倍 offset=4  占用4 5 6 7      无填充
