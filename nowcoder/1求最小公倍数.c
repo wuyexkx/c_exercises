@@ -25,21 +25,22 @@ int  main()
 
 
 // 最小公倍数 = 两数之积 / 最大公约数
-// #include <stdio.h>
+// 辗转相除求最大公约数
+#include <stdio.h>
 
-// int  main()
-// {
-//     int a, b;
-//     while (scanf("%d%d", &a, &b) != EOF) {
-//         // 最小公倍数 = 两数之积 / 最大公约数
-//         int aa = a, bb = b;
-//         // 求最大公约数
-//         int t;
-//         while (t = aa % bb) {
-//             aa = bb;
-//             bb = t;
-//         }
-//         printf("%d\n", a * b / bb);
-//     }
-//     return 0;
-// }
+int  main()
+{
+    int a, b;
+    while (scanf("%d%d", &a, &b) != EOF) {
+        // 最小公倍数 = 两数之积 / 最大公约数
+        int aa = a, bb = b;
+        // 求最大公约数
+        int t;
+        while (t = aa % bb) {
+            aa = bb;
+            bb = t;
+        }
+        printf("%d\n", a * b / bb);
+    }
+    return 0;
+}
