@@ -7,7 +7,7 @@
 //    1.宏名大写 
 //    2.宏体保护() 
 //    3.嵌入式中数的长度，L表示至少4字节long型，无符号
-#define SECOND_OF_YEAR  (365*24*3600)UL
+#define SECOND_OF_YEAR  (365*24*3600UL)
 
 // 2. 数据声明， 变量名结合方式，先右后左
 //  int a;
