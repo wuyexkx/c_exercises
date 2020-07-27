@@ -69,6 +69,46 @@
     //  调用这个地址0x1234的函数，函数形式为int func(int, char)
     //      ((int (*)(int, char))0x1234)();
 
+// 6. 判断机器字节序 （大小端）
+void byteorder(void)
+{
+    int x = 1;
+    if (*((char*)&x) == 1) {
+        printf("little endian\n");
+    } else {
+        printf("big endian\n");
+    }
+}
+
+// 7. 进制转换
+#define BUF_SIZE (33)   // 32位系统，最大二进制保存为32位 + '\0'
+char* baseconv(unsigned int num, int base)
+{
+    static char retbuf[BUF_SIZE];
+    char* p = &retbuf[BUF_SIZE - 1];
+    *p = '\0';
+    
+    do {
+        *--p = "0123456789abcdef"[num % base]; // 从后往前依次低位到高位
+        num /= base;
+    } while (num != 0);
+
+    return p;
+}
+
+// 8. 统计数中有多少个1的个数
+int bitcount(unsigned int num)
+{
+    // 4bit包含1的情况， 0-0 1-1 3-2
+    int counts[] = {0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4};    
+    
+    int count = 0;
+    for (; num != 0; num >>= 4) {
+        count += counts[num & 0x0F];
+    }
+    return count;
+}
+
 
 int main()
 {
