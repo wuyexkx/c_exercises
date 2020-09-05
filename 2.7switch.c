@@ -5,6 +5,12 @@
 
 int main()
 {
+    float b = 3.4;
+    // printf("%f", b % 2); // 不合法 invalid operands of types ‘float’ and ‘int’ to binary ‘operator%’ printf("%f", b % 2);
 
+    unsigned int a = -10;
+    unsigned int c = a + 2;
+    printf("%d\n", c);
 
+    return 0;
 }
