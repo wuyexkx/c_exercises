@@ -7,7 +7,8 @@
 //    1.宏名大写 
 //    2.宏体保护() 
 //    3.嵌入式中数的长度，L表示至少4字节long型，无符号
-#define SECOND_OF_YEAR  (365*24*3600UL)
+#define SECOND_OF_YEAR  (365*24*60*60UL) // 并不是最完美的答案
+#define SECOND_OF_YEAR  (1UL*365*24*60*60)   // 在C51的编译器中int为2Byte，  365*24*60溢出了，因此UL--4Byte
 
 // 2. 数据声明， 变量名结合方式，先右后左
 //  int a;
